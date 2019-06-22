@@ -38,6 +38,23 @@ namespace AdminAccountCreation
                 db.SaveChanges();        
             }
         }
+
+        public static void SetUserAccess(int id)
+        {
+            ImusCityHallEntities db = new ImusCityHallEntities();
+            List<SubModule> submoduleList = db.SubModules.ToList();
+            foreach(var subModule in submoduleList)
+            {
+                SubModuleUser subModuleUser = new SubModuleUser()
+                {
+                    EmployeeID = id,
+                    SubModuleID = subModule.SubModuleID
+                };
+                db.SubModuleUsers.Add(subModuleUser);
+                db.SaveChanges();
+            }
+
+        }
         static void Main(string[] args)
         {
             ImusCityHallEntities db = new ImusCityHallEntities();
@@ -80,6 +97,7 @@ namespace AdminAccountCreation
 
                 db.SaveChanges();
                 SubmoduleCreation();
+                SetUserAccess(employee.EmployeeID);
                 Console.WriteLine("Admin account created succesfully");
                 Console.ReadLine();
             }
