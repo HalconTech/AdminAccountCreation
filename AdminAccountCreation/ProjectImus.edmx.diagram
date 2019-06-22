@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9d3a492f831045c79d796a1965d3fe73" Name="Diagram1">
+        <EntityTypeShape EntityType="ImusCityHallModel.AspNetRole" Width="1.5" PointX="16.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImusCityHallModel.AspNetUserClaim" Width="1.5" PointX="16" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImusCityHallModel.AspNetUserLogin" Width="1.5" PointX="16" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImusCityHallModel.AspNetUserRole" Width="1.5" PointX="19" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImusCityHallModel.AspNetUser" Width="1.5" PointX="13.75" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImusCityHallModel.AuditTrail" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImusCityHallModel.Check" Width="1.5" PointX="10.5" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImusCityHallModel.Department" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImusCityHallModel.Disbursement" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImusCityHallModel.Division" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImusCityHallModel.Employee" Width="1.5" PointX="8.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImusCityHallModel.EmployeePosition" Width="1.5" PointX="6" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImusCityHallModel.EmployeeRank" Width="1.5" PointX="3.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImusCityHallModel.EmployeeStatu" Width="1.5" PointX="6" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImusCityHallModel.Fund" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImusCityHallModel.LicensingCode" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImusCityHallModel.Payee" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImusCityHallModel.PayeeRepresentative" Width="1.5" PointX="3" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImusCityHallModel.PaymentType" Width="1.5" PointX="3" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImusCityHallModel.ReportParameter" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImusCityHallModel.SecurityQuestionBank" Width="1.5" PointX="11.25" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImusCityHallModel.SecurityQuestionUser" Width="1.5" PointX="13.5" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImusCityHallModel.SubModule" Width="1.5" PointX="11.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImusCityHallModel.SubModuleUser" Width="1.5" PointX="13.5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImusCityHallModel.sysdiagram" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImusCityHallModel.UserAccount" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="ImusCityHallModel.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" ManuallyRouted="false" />
+        <AssociationConnector Association="ImusCityHallModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="ImusCityHallModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="ImusCityHallModel.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="ImusCityHallModel.FK_Check_Disbursement" ManuallyRouted="false" />
+        <AssociationConnector Association="ImusCityHallModel.FK_Check_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="ImusCityHallModel.FK_Check_Employee1" ManuallyRouted="false" />
+        <AssociationConnector Association="ImusCityHallModel.FK_Check_Employee2" ManuallyRouted="false" />
+        <AssociationConnector Association="ImusCityHallModel.FK_Department_Division" ManuallyRouted="false" />
+        <AssociationConnector Association="ImusCityHallModel.FK_Disbursement_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="ImusCityHallModel.FK_Employee_Department" ManuallyRouted="false" />
+        <AssociationConnector Association="ImusCityHallModel.FK_Disbursement_Disbursement" ManuallyRouted="false" />
+        <AssociationConnector Association="ImusCityHallModel.FK_Disbursement_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="ImusCityHallModel.FK_Disbursement_Employee1" ManuallyRouted="false" />
+        <AssociationConnector Association="ImusCityHallModel.FK_Disbursement_Employee2" ManuallyRouted="false" />
+        <AssociationConnector Association="ImusCityHallModel.FK_Disbursement_PayeeRepresentative" ManuallyRouted="false" />
+        <AssociationConnector Association="ImusCityHallModel.FK_Disbursement_PaymentType" ManuallyRouted="false" />
+        <AssociationConnector Association="ImusCityHallModel.FK_Employee_EmployeePosition" ManuallyRouted="false" />
+        <AssociationConnector Association="ImusCityHallModel.FK_Employee_EmployeeStatus" ManuallyRouted="false" />
+        <AssociationConnector Association="ImusCityHallModel.FK_SecurityQuestionUser_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="ImusCityHallModel.FK_SubModuleUser_Employee" ManuallyRouted="false" />
+        <AssociationConnector Association="ImusCityHallModel.FK_EmployeePosition_EmployeeRank" ManuallyRouted="false" />
+        <AssociationConnector Association="ImusCityHallModel.FK_PayeeRepresentative_Payee" ManuallyRouted="false" />
+        <AssociationConnector Association="ImusCityHallModel.FK_SecurityQuestionUser_SecurityQuestionBank" ManuallyRouted="false" />
+        <AssociationConnector Association="ImusCityHallModel.FK_SubModuleUser_SubModule" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
