@@ -12,22 +12,21 @@ namespace AdminAccountCreation
     using System;
     using System.Collections.Generic;
     
-    public partial class Division
+    public partial class Bank
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Division()
+        public Bank()
         {
-            this.Employees = new HashSet<Employee>();
+            this.FundBanks = new HashSet<FundBank>();
         }
     
-        public int DivisionID { get; set; }
-        public string DivisionName { get; set; }
-        public string DivisionCode { get; set; }
+        public int BankID { get; set; }
+        public string BankName { get; set; }
+        public string BankCode { get; set; }
+        public string Branch { get; set; }
         public Nullable<bool> IsActive { get; set; }
-        public Nullable<int> DepartmentID { get; set; }
     
-        public virtual Department Department { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee> Employees { get; set; }
+        public virtual ICollection<FundBank> FundBanks { get; set; }
     }
 }

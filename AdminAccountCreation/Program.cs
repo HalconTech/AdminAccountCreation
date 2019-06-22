@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,18 +11,46 @@ namespace AdminAccountCreation
 {
     class Program
     {
+        public static void SubmoduleCreation()
+        {
+            //Submodule Creation
+            ImusCityHallEntities db = new ImusCityHallEntities();
+            
+            StringDictionary dictsubModule = new StringDictionary();
+            dictsubModule.Add("Check Disbursement", "CDS");
+            dictsubModule.Add("Employee Management", "EMP");
+            dictsubModule.Add("Customer", "CUST");
+            dictsubModule.Add("Department", "DEPT");
+            dictsubModule.Add("Division", "DIV");
+            dictsubModule.Add("Identification Card", "ID");
+            dictsubModule.Add("User Access", "UA");
+
+            foreach (DictionaryEntry entry in dictsubModule)
+            {
+                string moduleName = entry.Key.ToString();
+                moduleName = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(moduleName.ToLower());
+                SubModule subModule = new SubModule()
+                {
+                    Name = moduleName,
+                    Acronym = entry.Value.ToString()
+                };
+                db.SubModules.Add(subModule);
+                db.SaveChanges();        
+            }
+        }
         static void Main(string[] args)
         {
-
             ImusCityHallEntities db = new ImusCityHallEntities();
             Employee employee = new Employee();
             employee.EmployeeNo = "0000001";
 
             if (!db.Employees.Any(m => m.EmployeeNo == employee.EmployeeNo))
             {
+                //Admin Creation
                 employee.FirstName = "HalconTech";
                 employee.LastName = "HalconTech";
                 employee.PrimaryEmail = "HalconTech2019@gmail.com";
+                employee.IsAdmin = true;
                 db.Employees.Add(employee);
 
                 AspNetRole roles = new AspNetRole();
@@ -47,10 +78,8 @@ namespace AdminAccountCreation
                 asproleuser.RoleId = "1";
                 db.AspNetUserRoles.Add(asproleuser);
 
-
-
-
                 db.SaveChanges();
+                SubmoduleCreation();
                 Console.WriteLine("Admin account created succesfully");
                 Console.ReadLine();
             }
@@ -59,7 +88,7 @@ namespace AdminAccountCreation
                 Console.WriteLine("Account is already created");
                 Console.ReadLine();
             }
-           
+
         }
     }
 }

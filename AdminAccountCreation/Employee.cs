@@ -17,12 +17,16 @@ namespace AdminAccountCreation
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Employee()
         {
+            this.BankTrails = new HashSet<BankTrail>();
+            this.CDSSignatories = new HashSet<CDSSignatory>();
+            this.CDSSignatories1 = new HashSet<CDSSignatory>();
+            this.CDSSignatories2 = new HashSet<CDSSignatory>();
+            this.CDSSignatories3 = new HashSet<CDSSignatory>();
+            this.CDSSignatories4 = new HashSet<CDSSignatory>();
+            this.CDSSignatories5 = new HashSet<CDSSignatory>();
             this.Checks = new HashSet<Check>();
-            this.Checks1 = new HashSet<Check>();
-            this.Checks2 = new HashSet<Check>();
-            this.Disbursements = new HashSet<Disbursement>();
-            this.Disbursements1 = new HashSet<Disbursement>();
-            this.Disbursements2 = new HashSet<Disbursement>();
+            this.CheckReleases = new HashSet<CheckRelease>();
+            this.Customers = new HashSet<Customer>();
             this.SecurityQuestionUsers = new HashSet<SecurityQuestionUser>();
             this.SubModuleUsers = new HashSet<SubModuleUser>();
         }
@@ -34,7 +38,7 @@ namespace AdminAccountCreation
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string Nickname { get; set; }
-        public Nullable<int> EmployeeDepartmentID { get; set; }
+        public Nullable<int> EmployeeDivisionID { get; set; }
         public Nullable<int> EmployeeStatusID { get; set; }
         public Nullable<int> EmployeePositionID { get; set; }
         public Nullable<System.DateTime> DateHired { get; set; }
@@ -82,20 +86,29 @@ namespace AdminAccountCreation
         public byte[] Photo { get; set; }
         public string NameSuffix { get; set; }
         public string BankAccountNo { get; set; }
+        public Nullable<bool> IsAdmin { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BankTrail> BankTrails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CDSSignatory> CDSSignatories { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CDSSignatory> CDSSignatories1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CDSSignatory> CDSSignatories2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CDSSignatory> CDSSignatories3 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CDSSignatory> CDSSignatories4 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CDSSignatory> CDSSignatories5 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Check> Checks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Check> Checks1 { get; set; }
+        public virtual ICollection<CheckRelease> CheckReleases { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Check> Checks2 { get; set; }
-        public virtual Department Department { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Disbursement> Disbursements { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Disbursement> Disbursements1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Disbursement> Disbursements2 { get; set; }
+        public virtual ICollection<Customer> Customers { get; set; }
+        public virtual Division Division { get; set; }
         public virtual EmployeePosition EmployeePosition { get; set; }
         public virtual EmployeeStatu EmployeeStatu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

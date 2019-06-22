@@ -12,19 +12,23 @@ namespace AdminAccountCreation
     using System;
     using System.Collections.Generic;
     
-    public partial class PaymentType
+    public partial class IdentificationCardType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PaymentType()
+        public IdentificationCardType()
         {
-            this.Disbursements = new HashSet<Disbursement>();
+            this.CheckReleases = new HashSet<CheckRelease>();
+            this.CustomerIdentificationCards = new HashSet<CustomerIdentificationCard>();
         }
     
-        public int PaymentTypeID { get; set; }
-        public string Name { get; set; }
-        public string PaymentCode { get; set; }
+        public int IdentificationCardTypeID { get; set; }
+        public string CardType { get; set; }
+        public Nullable<bool> IsActive { get; set; }
+        public Nullable<System.DateTime> DateAdded { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Disbursement> Disbursements { get; set; }
+        public virtual ICollection<CheckRelease> CheckReleases { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CustomerIdentificationCard> CustomerIdentificationCards { get; set; }
     }
 }

@@ -31,7 +31,14 @@ namespace AdminAccountCreation
         public virtual DbSet<AspNetUserRole> AspNetUserRoles { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<AuditTrail> AuditTrails { get; set; }
+        public virtual DbSet<Bank> Banks { get; set; }
+        public virtual DbSet<BankTrail> BankTrails { get; set; }
+        public virtual DbSet<CDSSignatory> CDSSignatories { get; set; }
         public virtual DbSet<Check> Checks { get; set; }
+        public virtual DbSet<CheckRelease> CheckReleases { get; set; }
+        public virtual DbSet<ControlNumber> ControlNumbers { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<CustomerIdentificationCard> CustomerIdentificationCards { get; set; }
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Disbursement> Disbursements { get; set; }
         public virtual DbSet<Division> Divisions { get; set; }
@@ -40,16 +47,16 @@ namespace AdminAccountCreation
         public virtual DbSet<EmployeeRank> EmployeeRanks { get; set; }
         public virtual DbSet<EmployeeStatu> EmployeeStatus { get; set; }
         public virtual DbSet<Fund> Funds { get; set; }
+        public virtual DbSet<FundBank> FundBanks { get; set; }
+        public virtual DbSet<IdentificationCardType> IdentificationCardTypes { get; set; }
         public virtual DbSet<LicensingCode> LicensingCodes { get; set; }
+        public virtual DbSet<Module> Modules { get; set; }
         public virtual DbSet<Payee> Payees { get; set; }
         public virtual DbSet<PayeeRepresentative> PayeeRepresentatives { get; set; }
-        public virtual DbSet<PaymentType> PaymentTypes { get; set; }
-        public virtual DbSet<ReportParameter> ReportParameters { get; set; }
         public virtual DbSet<SecurityQuestionBank> SecurityQuestionBanks { get; set; }
         public virtual DbSet<SecurityQuestionUser> SecurityQuestionUsers { get; set; }
         public virtual DbSet<SubModule> SubModules { get; set; }
         public virtual DbSet<SubModuleUser> SubModuleUsers { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<UserAccount> UserAccounts { get; set; }
     }
 }

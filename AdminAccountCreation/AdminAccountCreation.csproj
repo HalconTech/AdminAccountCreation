@@ -104,7 +104,28 @@
     <Compile Include="AuditTrail.cs">
       <DependentUpon>ProjectImus.tt</DependentUpon>
     </Compile>
+    <Compile Include="Bank.cs">
+      <DependentUpon>ProjectImus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BankTrail.cs">
+      <DependentUpon>ProjectImus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CDSSignatory.cs">
+      <DependentUpon>ProjectImus.tt</DependentUpon>
+    </Compile>
     <Compile Include="Check.cs">
+      <DependentUpon>ProjectImus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CheckRelease.cs">
+      <DependentUpon>ProjectImus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ControlNumber.cs">
+      <DependentUpon>ProjectImus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.cs">
+      <DependentUpon>ProjectImus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerIdentificationCard.cs">
       <DependentUpon>ProjectImus.tt</DependentUpon>
     </Compile>
     <Compile Include="Department.cs">
@@ -131,17 +152,22 @@
     <Compile Include="Fund.cs">
       <DependentUpon>ProjectImus.tt</DependentUpon>
     </Compile>
+    <Compile Include="FundBank.cs">
+      <DependentUpon>ProjectImus.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IdentificationCardType.cs">
+      <DependentUpon>ProjectImus.tt</DependentUpon>
+    </Compile>
     <Compile Include="LicensingCode.cs">
       <DependentUpon>ProjectImus.tt</DependentUpon>
     </Compile>
-    <Compile Include="Module.cs" />
+    <Compile Include="Module.cs">
+      <DependentUpon>ProjectImus.tt</DependentUpon>
+    </Compile>
     <Compile Include="Payee.cs">
       <DependentUpon>ProjectImus.tt</DependentUpon>
     </Compile>
     <Compile Include="PayeeRepresentative.cs">
-      <DependentUpon>ProjectImus.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PaymentType.cs">
       <DependentUpon>ProjectImus.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -161,9 +187,6 @@
       <DependentUpon>ProjectImus.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReportParameter.cs">
-      <DependentUpon>ProjectImus.tt</DependentUpon>
-    </Compile>
     <Compile Include="SecurityQuestionBank.cs">
       <DependentUpon>ProjectImus.tt</DependentUpon>
     </Compile>
@@ -173,10 +196,8 @@
     <Compile Include="SubModule.cs">
       <DependentUpon>ProjectImus.tt</DependentUpon>
     </Compile>
+    <Compile Include="SubModuleDefault.cs" />
     <Compile Include="SubModuleUser.cs">
-      <DependentUpon>ProjectImus.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagram.cs">
       <DependentUpon>ProjectImus.tt</DependentUpon>
     </Compile>
     <Compile Include="UserAccount.cs">

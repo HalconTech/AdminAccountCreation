@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'c:\users\oliver\documents\visual studio 2015\Projects\AdminAccountCreation\AdminAccountCreation\ProjectImus.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\John Oliver N. Lacap\Source\Repos\AdminAccountCreation\AdminAccountCreation\ProjectImus.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

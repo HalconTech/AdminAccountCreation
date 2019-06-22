@@ -12,10 +12,14 @@ namespace AdminAccountCreation
     using System;
     using System.Collections.Generic;
     
-    public partial class ReportParameter
+    public partial class CustomerIdentificationCard
     {
-        public int ReportParameterID { get; set; }
-        public string CityAccountant { get; set; }
-        public string CItyTreasurer { get; set; }
+        public int CustomerIdentificationCardID { get; set; }
+        public Nullable<int> CustomerID { get; set; }
+        public Nullable<int> IdentificationCardTypeID { get; set; }
+        public string IdentificationNumber { get; set; }
+    
+        public virtual Customer Customer { get; set; }
+        public virtual IdentificationCardType IdentificationCardType { get; set; }
     }
 }
