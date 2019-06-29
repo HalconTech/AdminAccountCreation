@@ -347,6 +347,7 @@
           <Property Name="MachineName" Type="nvarchar" MaxLength="50" />
           <Property Name="IsDemo" Type="bit" />
           <Property Name="SubModuleID" Type="int" />
+          <Property Name="UserID" Type="int" />
         </EntityType>
         <EntityType Name="Module">
           <Key>
@@ -837,6 +838,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_LicensingCode_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="LicensingCode" Type="Self.LicensingCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="LicensingCode">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_LicensingCode_SubModule">
           <End Role="SubModule" Type="Self.SubModule" Multiplicity="0..1" />
           <End Role="LicensingCode" Type="Self.LicensingCode" Multiplicity="*" />
@@ -1091,6 +1104,10 @@
             <End Role="Fund" EntitySet="Fund" />
             <End Role="FundBank" EntitySet="FundBank" />
           </AssociationSet>
+          <AssociationSet Name="FK_LicensingCode_Employee" Association="Self.FK_LicensingCode_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="LicensingCode" EntitySet="LicensingCode" />
+          </AssociationSet>
           <AssociationSet Name="FK_LicensingCode_SubModule" Association="Self.FK_LicensingCode_SubModule">
             <End Role="SubModule" EntitySet="SubModule" />
             <End Role="LicensingCode" EntitySet="LicensingCode" />
@@ -1149,7 +1166,6 @@
           <EntitySet Name="Funds" EntityType="ImusCityHallModel.Fund" />
           <EntitySet Name="FundBanks" EntityType="ImusCityHallModel.FundBank" />
           <EntitySet Name="IdentificationCardTypes" EntityType="ImusCityHallModel.IdentificationCardType" />
-          <EntitySet Name="LicensingCodes" EntityType="ImusCityHallModel.LicensingCode" />
           <EntitySet Name="Modules" EntityType="ImusCityHallModel.Module" />
           <EntitySet Name="Payees" EntityType="ImusCityHallModel.Payee" />
           <EntitySet Name="PayeeRepresentatives" EntityType="ImusCityHallModel.PayeeRepresentative" />
@@ -1302,10 +1318,6 @@
             <End Role="Fund" EntitySet="Funds" />
             <End Role="FundBank" EntitySet="FundBanks" />
           </AssociationSet>
-          <AssociationSet Name="FK_LicensingCode_SubModule" Association="ImusCityHallModel.FK_LicensingCode_SubModule">
-            <End Role="SubModule" EntitySet="SubModules" />
-            <End Role="LicensingCode" EntitySet="LicensingCodes" />
-          </AssociationSet>
           <AssociationSet Name="FK_SubModule_Module" Association="ImusCityHallModel.FK_SubModule_Module">
             <End Role="Module" EntitySet="Modules" />
             <End Role="SubModule" EntitySet="SubModules" />
@@ -1321,6 +1333,15 @@
           <AssociationSet Name="FK_SubModuleUser_SubModule" Association="ImusCityHallModel.FK_SubModuleUser_SubModule">
             <End Role="SubModule" EntitySet="SubModules" />
             <End Role="SubModuleUser" EntitySet="SubModuleUsers" />
+          </AssociationSet>
+          <EntitySet Name="LicensingCodes" EntityType="ImusCityHallModel.LicensingCode" />
+          <AssociationSet Name="FK_LicensingCode_Employee" Association="ImusCityHallModel.FK_LicensingCode_Employee">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="LicensingCode" EntitySet="LicensingCodes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LicensingCode_SubModule" Association="ImusCityHallModel.FK_LicensingCode_SubModule">
+            <End Role="SubModule" EntitySet="SubModules" />
+            <End Role="LicensingCode" EntitySet="LicensingCodes" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="AspNetRole">
@@ -1650,6 +1671,7 @@
           <NavigationProperty Name="EmployeeStatu" Relationship="ImusCityHallModel.FK_Employee_EmployeeStatus" FromRole="Employee" ToRole="EmployeeStatu" />
           <NavigationProperty Name="SecurityQuestionUsers" Relationship="ImusCityHallModel.FK_SecurityQuestionUser_Employee" FromRole="Employee" ToRole="SecurityQuestionUser" />
           <NavigationProperty Name="SubModuleUsers" Relationship="ImusCityHallModel.FK_SubModuleUser_Employee" FromRole="Employee" ToRole="SubModuleUser" />
+          <NavigationProperty Name="LicensingCodes" Relationship="ImusCityHallModel.FK_LicensingCode_Employee" FromRole="Employee" ToRole="LicensingCode" />
         </EntityType>
         <EntityType Name="EmployeePosition">
           <Key>
@@ -1723,18 +1745,6 @@
           <NavigationProperty Name="CheckReleases" Relationship="ImusCityHallModel.FK_CheckRelease_IdentificationCardType" FromRole="IdentificationCardType" ToRole="CheckRelease" />
           <NavigationProperty Name="CustomerIdentificationCards" Relationship="ImusCityHallModel.FK_CustomerIdentificationCard_IdentificationCardType" FromRole="IdentificationCardType" ToRole="CustomerIdentificationCard" />
         </EntityType>
-        <EntityType Name="LicensingCode">
-          <Key>
-            <PropertyRef Name="LicenseKey" />
-          </Key>
-          <Property Name="LicenseKey" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ExpirationDate" Type="DateTime" Precision="0" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="MachineName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IsDemo" Type="Boolean" />
-          <Property Name="SubModuleID" Type="Int32" />
-          <NavigationProperty Name="SubModule" Relationship="ImusCityHallModel.FK_LicensingCode_SubModule" FromRole="LicensingCode" ToRole="SubModule" />
-        </EntityType>
         <EntityType Name="Module">
           <Key>
             <PropertyRef Name="ModuleID" />
@@ -1799,9 +1809,9 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Acronym" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ModuleID" Type="Int32" />
-          <NavigationProperty Name="LicensingCodes" Relationship="ImusCityHallModel.FK_LicensingCode_SubModule" FromRole="SubModule" ToRole="LicensingCode" />
           <NavigationProperty Name="Module" Relationship="ImusCityHallModel.FK_SubModule_Module" FromRole="SubModule" ToRole="Module" />
           <NavigationProperty Name="SubModuleUsers" Relationship="ImusCityHallModel.FK_SubModuleUser_SubModule" FromRole="SubModule" ToRole="SubModuleUser" />
+          <NavigationProperty Name="LicensingCodes" Relationship="ImusCityHallModel.FK_LicensingCode_SubModule" FromRole="SubModule" ToRole="LicensingCode" />
         </EntityType>
         <EntityType Name="SubModuleUser">
           <Key>
@@ -2261,18 +2271,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_LicensingCode_SubModule">
-          <End Type="ImusCityHallModel.SubModule" Role="SubModule" Multiplicity="0..1" />
-          <End Type="ImusCityHallModel.LicensingCode" Role="LicensingCode" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SubModule">
-              <PropertyRef Name="SubModuleID" />
-            </Principal>
-            <Dependent Role="LicensingCode">
-              <PropertyRef Name="SubModuleID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_SubModule_Module">
           <End Type="ImusCityHallModel.Module" Role="Module" Multiplicity="0..1" />
           <End Type="ImusCityHallModel.SubModule" Role="SubModule" Multiplicity="*" />
@@ -2317,6 +2315,44 @@
               <PropertyRef Name="SubModuleID" />
             </Principal>
             <Dependent Role="SubModuleUser">
+              <PropertyRef Name="SubModuleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="LicensingCode">
+          <Key>
+            <PropertyRef Name="LicenseKey" />
+          </Key>
+          <Property Name="LicenseKey" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExpirationDate" Type="DateTime" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="MachineName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDemo" Type="Boolean" />
+          <Property Name="SubModuleID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" />
+          <NavigationProperty Name="Employee" Relationship="ImusCityHallModel.FK_LicensingCode_Employee" FromRole="LicensingCode" ToRole="Employee" />
+          <NavigationProperty Name="SubModule" Relationship="ImusCityHallModel.FK_LicensingCode_SubModule" FromRole="LicensingCode" ToRole="SubModule" />
+        </EntityType>
+        <Association Name="FK_LicensingCode_Employee">
+          <End Type="ImusCityHallModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="ImusCityHallModel.LicensingCode" Role="LicensingCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmployeeID" />
+            </Principal>
+            <Dependent Role="LicensingCode">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LicensingCode_SubModule">
+          <End Type="ImusCityHallModel.SubModule" Role="SubModule" Multiplicity="0..1" />
+          <End Type="ImusCityHallModel.LicensingCode" Role="LicensingCode" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubModule">
+              <PropertyRef Name="SubModuleID" />
+            </Principal>
+            <Dependent Role="LicensingCode">
               <PropertyRef Name="SubModuleID" />
             </Dependent>
           </ReferentialConstraint>
@@ -2680,18 +2716,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="LicensingCodes">
-            <EntityTypeMapping TypeName="ImusCityHallModel.LicensingCode">
-              <MappingFragment StoreEntitySet="LicensingCode">
-                <ScalarProperty Name="SubModuleID" ColumnName="SubModuleID" />
-                <ScalarProperty Name="IsDemo" ColumnName="IsDemo" />
-                <ScalarProperty Name="MachineName" ColumnName="MachineName" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
-                <ScalarProperty Name="LicenseKey" ColumnName="LicenseKey" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Modules">
             <EntityTypeMapping TypeName="ImusCityHallModel.Module">
               <MappingFragment StoreEntitySet="Module">
@@ -2770,6 +2794,19 @@
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="UserAccountID" ColumnName="UserAccountID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LicensingCodes">
+            <EntityTypeMapping TypeName="ImusCityHallModel.LicensingCode">
+              <MappingFragment StoreEntitySet="LicensingCode">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="SubModuleID" ColumnName="SubModuleID" />
+                <ScalarProperty Name="IsDemo" ColumnName="IsDemo" />
+                <ScalarProperty Name="MachineName" ColumnName="MachineName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+                <ScalarProperty Name="LicenseKey" ColumnName="LicenseKey" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

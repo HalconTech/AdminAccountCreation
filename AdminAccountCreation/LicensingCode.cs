@@ -20,7 +20,9 @@ namespace AdminAccountCreation
         public string MachineName { get; set; }
         public Nullable<bool> IsDemo { get; set; }
         public Nullable<int> SubModuleID { get; set; }
+        public Nullable<int> UserID { get; set; }
     
+        public virtual Employee Employee { get; set; }
         public virtual SubModule SubModule { get; set; }
     }
 }

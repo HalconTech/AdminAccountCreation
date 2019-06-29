@@ -49,7 +49,6 @@ namespace AdminAccountCreation
         public virtual DbSet<Fund> Funds { get; set; }
         public virtual DbSet<FundBank> FundBanks { get; set; }
         public virtual DbSet<IdentificationCardType> IdentificationCardTypes { get; set; }
-        public virtual DbSet<LicensingCode> LicensingCodes { get; set; }
         public virtual DbSet<Module> Modules { get; set; }
         public virtual DbSet<Payee> Payees { get; set; }
         public virtual DbSet<PayeeRepresentative> PayeeRepresentatives { get; set; }
@@ -58,5 +57,6 @@ namespace AdminAccountCreation
         public virtual DbSet<SubModule> SubModules { get; set; }
         public virtual DbSet<SubModuleUser> SubModuleUsers { get; set; }
         public virtual DbSet<UserAccount> UserAccounts { get; set; }
+        public virtual DbSet<LicensingCode> LicensingCodes { get; set; }
     }
 }
